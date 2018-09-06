@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .clock{
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        border-radius: 50%;
+        background: transparent;
+        position: relative;
+    }
+    .clock1{
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+        border-radius: 50%;
+        background: transparent;
+        position: absolute;
+        top:0;
+        left: 0;
+    }
+    .h{
+        position: absolute;
+        height: 50px;
+        width: 10px;
+        background: #4ebbfe;
+        right:100px;
+        top: 50px;
+    }
+    .m{
+        position: absolute;
+        height: 80px;
+        width: 10px;
+        background: #ff6700;
+        right:100px;
+        top: 20px;
+    }
+    .s{
+        position: absolute;
+        height: 100px;
+        width: 10px;
+        background: red;
+        right:100px;
+        top: 0;
+    }
+</style>
+<body>
+<div class="clock">
+    <div class="clock1">
+        <div class="s"></div>
+    </div>
+    <div class="clock1">
+        <div class="m"></div>
+    </div>
+    <div class="clock1">
+        <div class="h"></div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    let clock=document.querySelectorAll(".clock1")
+    setInterval(time,1000)
+    let num=0;
+    function time() {
+        let now=new Date();
+        if(now.getHours()>=12){
+            num=now.getHours()-12
+        }else{
+            num=now.getHours()
+        }
+        clock[0].style.transform=`rotate(${now.getSeconds()*6}deg)`;
+        clock[1].style.transform=`rotate(${(now.getMinutes()+now.getSeconds()/60)*6}deg)`;
+        clock[2].style.transform=`rotate(${(num+now.getMinutes()/60+now.getSeconds()/3600)*6*5}deg)`;
+        s+=6
+    }
+</script>
